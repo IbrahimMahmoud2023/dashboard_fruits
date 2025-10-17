@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "960581839353",
+    "project_id": "fruit-hub-aeb44",
+    "storage_bucket": "fruit-hub-aeb44.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960581839353:android:cf2faedfcb6eb80bc3b528",
+        "android_client_info": {
+          "package_name": "com.example.fruits_ecommerec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960581839353-2h9aapg05eoe4mdnakvknhpngte15fas.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fruits_ecommerec",
+            "certificate_hash": "e4f66777c9e88155e3d05cc7c0c61aed4f37e9a2"
+          }
+        },
+        {
+          "client_id": "960581839353-47i73ibh3imje0fprqjd7goh5l3fnmf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGmCDHPACm-D4tykGFsJ1jUTqrVnv3bA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960581839353-47i73ibh3imje0fprqjd7goh5l3fnmf7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "960581839353-crobb44m2j59dv9rl96umpu73he853s2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fruitsEcommerec"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960581839353:android:2be1325c539af573c3b528",
+        "android_client_info": {
+          "package_name": "com.example.fruits_hub_dashboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960581839353-47i73ibh3imje0fprqjd7goh5l3fnmf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGmCDHPACm-D4tykGFsJ1jUTqrVnv3bA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960581839353-47i73ibh3imje0fprqjd7goh5l3fnmf7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "960581839353-crobb44m2j59dv9rl96umpu73he853s2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fruitsEcommerec"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
