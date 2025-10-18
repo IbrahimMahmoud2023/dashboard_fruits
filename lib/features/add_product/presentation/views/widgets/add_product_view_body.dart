@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'custom_text_form_filed.dart';
+import 'image_field.dart';
 
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});
@@ -42,6 +43,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               textInputType: TextInputType.text,
             ),
             SizedBox(height: 16),
+            ImageField()
           ],
         ),
       ),
