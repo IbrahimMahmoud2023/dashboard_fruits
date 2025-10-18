@@ -43,7 +43,11 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               textInputType: TextInputType.text,
             ),
             SizedBox(height: 16),
-            ImageField()
+            ImageField(
+              onFileChange: (image){
+
+              },
+            )
           ],
         ),
       ),
