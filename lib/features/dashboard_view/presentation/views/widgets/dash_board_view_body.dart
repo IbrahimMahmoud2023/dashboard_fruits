@@ -12,11 +12,13 @@ class DashBoardViewBody extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: CustomButton(onPressed: (){
-
-            Navigator.pushNamed(context, AddProductView.routeName);
-          }, text: 'Add Data'),
-        ) ,
+          child: CustomButton(
+            onPressed: () {
+              Navigator.pushNamed(context, AddProductView.routeName);
+            },
+            text: 'Add Data',
+          ),
+        ),
       ],
     );
   }
