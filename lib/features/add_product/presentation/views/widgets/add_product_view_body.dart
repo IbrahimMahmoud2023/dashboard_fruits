@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/is_featured_check_box.dart';
 
 import 'custom_text_form_filed.dart';
 import 'image_field.dart';
@@ -11,6 +12,7 @@ class AddProductViewBody extends StatefulWidget {
 }
 
 class _AddProductViewBodyState extends State<AddProductViewBody> {
+  bool isFeatured = false;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   @override
@@ -43,11 +45,16 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               textInputType: TextInputType.text,
             ),
             SizedBox(height: 16),
-            ImageField(
-              onFileChange: (image){
-
+            IsFeaturedCheckBox(
+              isChecked: isFeatured,
+              onChanged: (value) {
+                setState(() {
+                  isFeatured = value;
+                });
               },
-            )
+            ),
+            SizedBox(height: 16),
+            ImageField(onFileChange: (image) {}),
           ],
         ),
       ),

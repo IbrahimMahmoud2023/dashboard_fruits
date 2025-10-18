@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import '../../../../../constants.dart';
+import '../../../../../core/utils/app_style_text.dart';
+import 'custom_check_box.dart';
+
+class IsFeaturedCheckBox extends StatelessWidget {
+  const IsFeaturedCheckBox({
+    super.key,
+    required this.isChecked,
+    required this.onChanged,
+  });
+  final bool isChecked;
+  final ValueChanged<bool> onChanged;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+          child: CustomCheckBox(value: isChecked, onChanged: onChanged),
+        ),
+
+        Expanded(
+          child: Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: 'is featured item? ',
+                  style: AppTextStyles.semibold13.copyWith(
+                    color: Color(0xFFA9B1B1),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
