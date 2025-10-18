@@ -19,31 +19,34 @@ class CustomTextFormFiled extends StatelessWidget {
   final int? maxLines;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-      child: TextFormField(
-        maxLines: maxLines,
-        obscureText:obscureText ,
-        onSaved: onSaved,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'هذا الحقل مطلوب';
-          } else {
-            return null;
-          }
-        },
-        keyboardType: textInputType,
-        decoration: InputDecoration(
-          filled: true,
-          suffixIcon: iconSuffix,
-          hintText: hintText,
-          hintStyle: AppTextStyles.semibold16.copyWith(
-            color: Color(0xFF9DA5A6),
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+        child: TextFormField(
+          maxLines: maxLines,
+          obscureText:obscureText ,
+          onSaved: onSaved,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'هذا الحقل مطلوب';
+            } else {
+              return null;
+            }
+          },
+          keyboardType: textInputType,
+          decoration: InputDecoration(
+            filled: true,
+            suffixIcon: iconSuffix,
+            hintText: hintText,
+            hintStyle: AppTextStyles.semibold16.copyWith(
+              color: Color(0xFF9DA5A6),
+            ),
+            fillColor: Color(0xFFF9FAFA),
+            border: buildOutlineInputBorder(),
+            enabledBorder: buildOutlineInputBorder(),
+            focusedBorder: buildOutlineInputBorder(),
           ),
-          fillColor: Color(0xFFF9FAFA),
-          border: buildOutlineInputBorder(),
-          enabledBorder: buildOutlineInputBorder(),
-          focusedBorder: buildOutlineInputBorder(),
         ),
       ),
     );
