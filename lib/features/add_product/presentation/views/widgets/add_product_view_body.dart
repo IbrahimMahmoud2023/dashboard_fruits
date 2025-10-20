@@ -107,7 +107,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                       setState(() {});
                     }
                   } else {
-                    showError(context, 'من فضلك اختر صورة للمنتج');
+                    showSnackBar(context, 'من فضلك اختر صورة للمنتج');
                   }
                 },
               ),

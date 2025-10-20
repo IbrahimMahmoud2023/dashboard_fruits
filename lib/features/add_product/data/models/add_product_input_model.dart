@@ -20,11 +20,11 @@ class AddProductInputModel {
     required this.price,
     required this.isFeatured,
     String? imageUrl,
-
   });
 
-
-  factory AddProductInputModel.fromEntity(AddProductInputEntity addProductInputEntity){
+  factory AddProductInputModel.fromEntity(
+    AddProductInputEntity addProductInputEntity,
+  ) {
     return AddProductInputModel(
       image: addProductInputEntity.image,
       productName: addProductInputEntity.productName,
@@ -36,18 +36,14 @@ class AddProductInputModel {
     );
   }
 
- toJson(){
-  return {
-    'productName':productName,
-    'description':description,
-    'productCode':productCode,
-    'price':price,
-    'isFeatured':isFeatured,
-    'imageUrl':imageUrl,
-    'image':image.path
-
-  };
-
-
- }
+  toJson() {
+    return {
+      'productName': productName,
+      'description': description,
+      'productCode': productCode,
+      'price': price,
+      'isFeatured': isFeatured,
+      'imageUrl': imageUrl,
+    };
+  }
 }
