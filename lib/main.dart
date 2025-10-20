@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub_dashboard/core/services/git_it_services.dart';
+import 'package:fruits_hub_dashboard/simple_block_observer.dart';
 
 import 'core/helper_function/on_generate_routes.dart';
 import 'features/dashboard_view/presentation/views/dash_board_view.dart';
@@ -7,12 +10,11 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  setupGetIt();
+  Bloc.observer = SimpleBlocObserver();
   runApp(DashBoardFruits());
 }
-
 
 class DashBoardFruits extends StatelessWidget {
   const DashBoardFruits({super.key});
@@ -26,6 +28,3 @@ class DashBoardFruits extends StatelessWidget {
     );
   }
 }
-
-
-

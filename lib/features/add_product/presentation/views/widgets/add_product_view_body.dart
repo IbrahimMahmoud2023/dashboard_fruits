@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub_dashboard/constants.dart';
 import 'package:fruits_hub_dashboard/core/widgets/custom_button.dart';
 import 'package:fruits_hub_dashboard/features/add_product/domain/entites/add_product_input_entity.dart';
 import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/is_featured_check_box.dart';
 import '../../../../../core/helper_function/show_snack_bar.dart';
+import '../../manager/add_product_cubit.dart';
 import 'custom_text_form_filed.dart';
 import 'image_field.dart';
 
@@ -99,6 +101,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                         price: price!,
                         isFeatured: isFeatured,
                       );
+                      context.read<AddProductCubit>().addProduct(input);
                     } else {
                       autoValidateMode = AutovalidateMode.always;
                       setState(() {});
