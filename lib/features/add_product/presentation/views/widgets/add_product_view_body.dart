@@ -5,6 +5,7 @@ import 'package:fruits_hub_dashboard/constants.dart';
 import 'package:fruits_hub_dashboard/core/widgets/custom_button.dart';
 import 'package:fruits_hub_dashboard/features/add_product/domain/entites/add_product_input_entity.dart';
 import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/is_featured_check_box.dart';
+import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/is_oragnic_check_box.dart';
 import '../../../../../core/helper_function/show_snack_bar.dart';
 import '../../manager/add_product_cubit.dart';
 import 'custom_text_form_filed.dart';
@@ -19,12 +20,16 @@ class AddProductViewBody extends StatefulWidget {
 
 class _AddProductViewBodyState extends State<AddProductViewBody> {
   bool isFeatured = false;
+
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
 
   String? productName, productCode, description;
   num? price;
   File? image;
+
+  late num expirationsOfMonths, numberOfCalories,unitsAmount;
+  bool isOrganic = false;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -68,7 +73,40 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               textInputType: TextInputType.text,
             ),
             SizedBox(height: 16),
+            CustomTextFormFiled(
+              onSaved: (value) {
+                expirationsOfMonths = num.parse(value!);
+              },
+              hintText: ' expirationOfMonths',
+              textInputType: TextInputType.number,
+            ),
+            SizedBox(height: 16),
+            CustomTextFormFiled(
+              onSaved: (value) {
+                numberOfCalories = num.parse(value!);
+              },
+              hintText: ' numberOfCalories',
+              textInputType: TextInputType.number,
+            ),
+            SizedBox(height: 16),
+            CustomTextFormFiled(
+              onSaved: (value) {
+                unitsAmount = num.parse(value!);
+              },
+              hintText: ' unitsAmount',
+              textInputType: TextInputType.number,
+            ),
+            SizedBox(height: 16),
             IsFeaturedCheckBox(
+              isChecked: isFeatured,
+              onChanged: (value) {
+                setState(() {
+                  isFeatured = value;
+                });
+              },
+            ),
+            SizedBox(height: 16),
+            IsOrganicCheckBox(
               isChecked: isFeatured,
               onChanged: (value) {
                 setState(() {
@@ -94,6 +132,11 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                       AddProductInputEntity input = AddProductInputEntity(
+                        reviews: [],
+                        expirationsOfMonths: expirationsOfMonths.toInt(),
+                        isOrganic: isOrganic,
+                        numberOfCalories: numberOfCalories.toInt(),
+                        unitsAmount: unitsAmount.toInt(),
                         image: image!,
                         productName: productName!,
                         description: description!,
