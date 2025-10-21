@@ -14,13 +14,27 @@ class SupabaseStorageServices implements StorageServices {
     );
   }
 
+  static createBucket({required String bucketName}) async {
+    var buckets = await supabase.client.storage.listBuckets();
+    bool isBucketsExist = false;
+    for (var bucket in buckets) {
+      if (bucket.id == bucketName) {
+        isBucketsExist = true;
+        break;
+      }
+    }
+    if (!isBucketsExist) {
+      await supabase.client.storage.createBucket(bucketName);
+    }
+  }
+
   @override
   Future<String> uploadImage(File file, String path) async {
-    String fileName = b.basename(file.path);
-    String fileExtensions = b.extension(file.path);
+    String fileName = b.basenameWithoutExtension(file.path);
+    String fileExtension = b.extension(file.path);
     var result = await supabase.client.storage
-        .from('fruits_images')
-        .upload('$path/$fileName.$fileExtensions', file);
+        .from(kFruitImages)
+        .upload('$path/$fileName$fileExtension', file);
     return result;
   }
 }

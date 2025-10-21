@@ -6,10 +6,10 @@ import 'custom_check_box.dart';
 class IsOrganicCheckBox extends StatelessWidget {
   const IsOrganicCheckBox({
     super.key,
-    required this.isChecked,
+    required this.isOrganic,
     required this.onChanged,
   });
-  final bool isChecked;
+  final bool isOrganic;
   final ValueChanged<bool> onChanged;
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class IsOrganicCheckBox extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-          child: CustomCheckBox(value: isChecked, onChanged: onChanged),
+          child: CustomCheckBox(value: isOrganic, onChanged: onChanged),
         ),
 
 

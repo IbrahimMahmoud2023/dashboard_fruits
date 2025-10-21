@@ -77,7 +77,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               onSaved: (value) {
                 expirationsOfMonths = num.parse(value!);
               },
-              hintText: ' expirationOfMonths',
+              hintText: ' مده الصلاحيه',
               textInputType: TextInputType.number,
             ),
             SizedBox(height: 16),
@@ -85,7 +85,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               onSaved: (value) {
                 numberOfCalories = num.parse(value!);
               },
-              hintText: ' numberOfCalories',
+              hintText: ' عدد السعرات الحراريه',
               textInputType: TextInputType.number,
             ),
             SizedBox(height: 16),
@@ -93,7 +93,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               onSaved: (value) {
                 unitsAmount = num.parse(value!);
               },
-              hintText: ' unitsAmount',
+              hintText: ' عدد الوحدات',
               textInputType: TextInputType.number,
             ),
             SizedBox(height: 16),
@@ -107,7 +107,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
             ),
             SizedBox(height: 16),
             IsOrganicCheckBox(
-              isChecked: isFeatured,
+              isOrganic: isOrganic,
               onChanged: (value) {
                 setState(() {
                   isFeatured = value;

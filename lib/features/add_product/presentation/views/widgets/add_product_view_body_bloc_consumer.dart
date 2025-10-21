@@ -5,6 +5,7 @@ import '../../../../../core/helper_function/show_snack_bar.dart';
 import '../../../../../core/widgets/custom_progress_hud.dart';
 import '../../manager/add_product_cubit.dart';
 import '../add_product_view.dart';
+import 'add_product_view_body.dart';
 
 class AddProductViewBodyBlocBuilder extends StatelessWidget {
   const AddProductViewBodyBlocBuilder({super.key});
@@ -21,15 +22,16 @@ class AddProductViewBodyBlocBuilder extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        if (state is AddProductLoading) {
-          return CustomProgressHud(
-            isLoading: true,
-            child: AddProductView(),
-          );
-        } else {
-          return AddProductView();
-        }
+        bool isLoading = state is AddProductLoading;
+        return Stack(
+          children: [
+            AddProductViewBody(),
+            if (isLoading)
+              CustomProgressHud(isLoading: true, child: Container()), // overlay
+          ],
+        );
       },
     );
   }
 }
+
