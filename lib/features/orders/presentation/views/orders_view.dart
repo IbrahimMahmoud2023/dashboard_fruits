@@ -8,6 +8,10 @@ class OrdersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Orders'),
+        centerTitle: true,
+      ),
       body: OrdersViewBody(),
     );
   }
