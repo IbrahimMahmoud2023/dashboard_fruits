@@ -20,12 +20,30 @@ class FireStoreServices implements DataBaseServices {
   }
 
   @override
-  Future<Map<String, dynamic>> getData({
+  Future<dynamic> getData({
     required String path,
-    required String documentId,
+    String? documentId,
+    Map<String, dynamic>? query,
   }) async {
-    var data = await fireStore.collection(path).doc(documentId).get();
-    return data.data() as Map<String, dynamic>;
+    if (documentId != null) {
+      var data = await fireStore.collection(path).doc(documentId).get();
+      return data.data();
+    } else {
+      Query<Map<String, dynamic>> data = await fireStore.collection(path);
+      if (query != null) {
+        if (query['orderBy'] != null) {
+          var orderByField = query['orderBy'];
+          var descendingField = query['descending'];
+          data = data.orderBy(orderByField, descending: descendingField);
+        }
+        if (query['limit'] != null) {
+          var limit = query['limit'];
+          data = data.limit(limit);
+        }
+      }
+      var result = await data.get();
+      return result.docs.map((e) => e.data()).toList();
+    }
   }
 
   @override
@@ -40,3 +58,4 @@ class FireStoreServices implements DataBaseServices {
     return data.exists;
   }
 }
+

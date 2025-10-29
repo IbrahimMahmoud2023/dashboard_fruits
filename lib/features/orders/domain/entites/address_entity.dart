@@ -16,6 +16,18 @@ class AddressEntity {
     this.phone,
   });
 
+  factory AddressEntity.fromJson(Map<String, dynamic> json) {
+    return AddressEntity(
+      name: json['name'],
+      email: json['email'],
+      address: json['address'],
+      floor: json['floor'],
+      city: json['city'],
+      phone: json['phone'],
+    );
+  }
+
+
 
 
   @override

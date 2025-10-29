@@ -18,6 +18,21 @@ class OrderEntity {
     required this.paymentMethod,
 });
 
+ factory OrderEntity.fromJson(Map<String, dynamic> json) {
+   return OrderEntity(
+     totalPrice: json['totalPrice'],
+     uId: json['uId'],
+     addressEntity: AddressEntity.fromJson(json['addressEntity']),
+     orderProductEntity: (json['orderProductEntity'] as List)
+         .map((e) => OrderProductEntity.fromJson(e))
+         .toList(),
+     paymentMethod: json['paymentMethod'],
+
+   );
+ }
+
+  }
 
 
-}
+
+

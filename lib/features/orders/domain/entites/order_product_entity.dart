@@ -13,6 +13,16 @@ class OrderProductEntity {
     required this.imageUrl,
     required this.quantity,
   });
+  factory OrderProductEntity.fromJson(Map<String, dynamic> json) {
+
+    return OrderProductEntity(
+      code: json['code'],
+      name: json['name'],
+      price: json['price'],
+      imageUrl: json['imageUrl'],
+      quantity: json['quantity'],
+    );
+  }
 
 
 }
