@@ -7,7 +7,7 @@ import '../../constants.dart';
 
 class SupabaseStorageServices implements StorageServices {
   static late Supabase supabase;
-  static initSupabase() async {
+  static Future<void> initSupabase() async {
     supabase = await Supabase.initialize(
       url: kSupaBaseUrl,
       anonKey: kSupaBaseKey,
@@ -32,9 +32,8 @@ class SupabaseStorageServices implements StorageServices {
   Future<String> uploadImage(File file, String path) async {
     String fileName = b.basenameWithoutExtension(file.path);
     String fileExtension = b.extension(file.path);
-    var result = await supabase.client.storage
-        .from(kFruitImages)
-        .upload('$path/$fileName$fileExtension', file);
-    return result;
+     await supabase.client.storage.from(kFruitImages).upload('$path/$fileName$fileExtension', file);
+    final String publicUrl = supabase.client.storage.from(kFruitImages).getPublicUrl('$path/$fileName$fileExtension');
+    return publicUrl;
   }
 }

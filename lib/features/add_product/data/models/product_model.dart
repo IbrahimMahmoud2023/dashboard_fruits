@@ -1,17 +1,15 @@
 import 'dart:io';
-
 import 'package:fruits_hub_dashboard/features/add_product/data/models/review_model.dart';
-import 'package:fruits_hub_dashboard/features/add_product/domain/entites/review_entity/review_entity.dart';
+import '../../domain/entites/product_entity.dart';
 
-import '../../domain/entites/add_product_input_entity.dart';
-
-class AddProductInputModel {
+class ProductModel {
   final String productName;
   final String description;
   final String productCode;
   final num price;
   final bool isFeatured;
   final File image;
+  final int sellingCount;
 
   String? imageUrl;
 
@@ -24,13 +22,14 @@ class AddProductInputModel {
   final num countRating = 0;
   final List<ReviewModel> reviews;
 
-  AddProductInputModel({
+  ProductModel({
     required this.reviews,
     required this.expirationsOfMonths,
      this.isOrganic = false,
     required this.numberOfCalories,
     required this.unitsAmount,
     required this.image,
+     this.sellingCount = 0,
     required this.productName,
     required this.description,
     required this.productCode,
@@ -39,10 +38,10 @@ class AddProductInputModel {
     this.imageUrl,
   });
 
-  factory AddProductInputModel.fromEntity(
-    AddProductInputEntity addProductInputEntity,
+  factory ProductModel.fromEntity(
+    ProductEntity productEntity, addProductInputEntity,
   ) {
-    return AddProductInputModel(
+    return ProductModel(
       reviews:  addProductInputEntity.reviews.map((e) => ReviewModel.fromEntity(e)).toList(),
       expirationsOfMonths: addProductInputEntity.expirationsOfMonths,
       isOrganic: addProductInputEntity.isOrganic,
@@ -60,6 +59,7 @@ class AddProductInputModel {
 
   toJson() {
     return {
+      'sellingCount' : sellingCount,
       'expirationsOfMonths': expirationsOfMonths,
       'isOrganic': isOrganic,
       'numberOfCalories': numberOfCalories,
