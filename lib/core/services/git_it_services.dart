@@ -23,6 +23,6 @@ void setupGetIt() {
     ImagesRepoImpl(getIt<StorageServices>()),
   );
   getIt.registerSingleton<OrderRepo>(
-    OrdersRepoImpl(dataBaseServices: getIt<FireStoreServices>()),
+    OrdersRepoImpl(dataBaseServices: getIt<DataBaseServices>()),
   );
 }
