@@ -27,6 +27,15 @@ class OrderProductModel {
       quantity: json['quantity'],
     );
   }
+  factory OrderProductModel.fromEntity(OrderProductEntity entity) {
+    return OrderProductModel(
+      name: entity.name,
+      code: entity.code,
+      price: entity.price,
+      quantity: entity.quantity,
+      imageUrl: entity.imageUrl,
+    );
+  }
 
   OrderProductEntity toEntity(){
     return OrderProductEntity(

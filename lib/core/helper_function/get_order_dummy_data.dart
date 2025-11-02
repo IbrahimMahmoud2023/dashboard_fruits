@@ -2,6 +2,8 @@ import 'package:fruits_hub_dashboard/features/orders/domain/entites/address_enti
 import 'package:fruits_hub_dashboard/features/orders/domain/entites/order_entity.dart';
 import 'package:fruits_hub_dashboard/features/orders/domain/entites/order_product_entity.dart';
 
+import '../enums/order_enum.dart';
+
 OrderEntity getDummyOrderData() {
   // 🏠 Address Data
   final address = AddressEntity(
@@ -49,6 +51,7 @@ OrderEntity getDummyOrderData() {
 
   // 💳 Build the Order Model
   return OrderEntity(
+    status: OrderStatus.pending,
     totalPrice: totalPrice,
     uId: "ORD001",
     addressEntity: address,

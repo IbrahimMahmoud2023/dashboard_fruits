@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fruits_hub_dashboard/features/orders/domain/entites/order_entity.dart';
-import 'order_item.dart';
+import 'order_item_widget.dart';
 
 class OrderItemListView extends StatelessWidget {
   const OrderItemListView({super.key, required this.orderModel});

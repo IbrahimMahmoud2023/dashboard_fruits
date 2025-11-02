@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:fruits_hub_dashboard/core/helper_function/get_status_color.dart';
 import 'package:fruits_hub_dashboard/features/orders/domain/entites/order_entity.dart';
 import '../../../data/models/order_product_model.dart';
 
@@ -35,6 +37,25 @@ class OrderItemWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                Spacer(),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: getStatusColor(orderModel.status),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    orderModel.status.name
+                        .toUpperCase(), // Converts enum to string
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ],
             ),
 
@@ -66,16 +87,22 @@ class OrderItemWidget extends StatelessWidget {
               itemCount: orderModel.orderProductEntity.length,
               itemBuilder: (context, index) {
                 final OrderProductModel product =
-                    orderModel.orderProductEntity[index] as OrderProductModel;
+                OrderProductModel.fromEntity(orderModel.orderProductEntity[index]);
+
                 return ListTile(
                   leading: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      product.imageUrl,
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) => const Icon(Icons.image),
+                    child: CachedNetworkImage(
+                      imageUrl: product.imageUrl,
+                      width: 40,
+                      height: 40,
+                      placeholder: (context, url) => const SizedBox(
+                        height: 24,
+                        width: 24,
+                        child: CircularProgressIndicator(),
+                      ),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
                   ),
                   title: Text(product.name),
