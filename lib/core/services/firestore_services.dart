@@ -57,5 +57,24 @@ class FireStoreServices implements DataBaseServices {
         .get();
     return data.exists;
   }
+
+  @override
+  Stream streamData({required String path, Map<String, dynamic>? query})async* {
+    Query<Map<String, dynamic>> data = fireStore.collection(path);
+    if (query != null) {
+      if (query['orderBy'] != null) {
+        var orderByField = query['orderBy'];
+        var descendingField = query['descending'];
+        data = data.orderBy(orderByField, descending: descendingField);
+      }
+      if (query['limit'] != null) {
+        var limit = query['limit'];
+        data = data.limit(limit);
+      }
+    }
+    await for (var snapshot in data.snapshots()) {
+      yield snapshot.docs.map((e) => e.data()).toList();
+    }
+  }
 }
 

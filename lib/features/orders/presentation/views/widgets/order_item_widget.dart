@@ -86,8 +86,9 @@ class OrderItemWidget extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: orderModel.orderProductEntity.length,
               itemBuilder: (context, index) {
-                final OrderProductModel product =
-                OrderProductModel.fromEntity(orderModel.orderProductEntity[index]);
+                final OrderProductModel product = OrderProductModel.fromEntity(
+                  orderModel.orderProductEntity[index],
+                );
 
                 return ListTile(
                   leading: ClipRRect(

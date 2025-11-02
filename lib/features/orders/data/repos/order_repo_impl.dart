@@ -12,15 +12,16 @@ class OrdersRepoImpl implements OrderRepo {
   OrdersRepoImpl({required this.dataBaseServices});
 
   @override
-  Future<Either<Failures, List<OrderEntity>>> fetchOrders() async {
+  Stream<Either<Failures, List<OrderEntity>>> fetchOrders() async* {
     try {
       final data = await dataBaseServices.getData(path: BackEndEndPoint.kGetOrders);
       List<OrderEntity> orders = (data as List)
           .map((e) => OrderEntity.fromJson(e))
           .toList();
-      return Right(orders);
+
+      yield Right(orders);
     } catch (e) {
-      return Left(Failures(errorMessage: 'failed to fetch data'));
+      yield Left(Failures(errorMessage: 'failed to fetch data'));
     }
   }
 }
