@@ -1,4 +1,8 @@
-part of 'fetch_order_cubit.dart';
+
+
+import 'package:flutter/material.dart';
+
+import '../../domain/entites/order_entity.dart';
 
 @immutable
 sealed class FetchOrderState {}
