@@ -8,4 +8,7 @@ class BackEndEndPoint {
   static const kAddProduct = 'products';
 
   static const kGetOrders = 'orders';
+  static const kUpdateOrder = 'orders';
+
+
 }
