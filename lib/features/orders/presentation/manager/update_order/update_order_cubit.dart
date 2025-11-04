@@ -1,6 +1,6 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub_dashboard/features/orders/domain/orders_repos/orders_repo.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../../core/enums/order_enum.dart';
 

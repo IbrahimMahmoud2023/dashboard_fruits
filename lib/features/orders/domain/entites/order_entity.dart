@@ -6,6 +6,7 @@ import 'order_product_entity.dart';
 class OrderEntity {
   final double totalPrice;
   final String uId;
+  final String orderId;
   final AddressEntity addressEntity;
 
   final List<OrderProductEntity> orderProductEntity;
@@ -13,6 +14,7 @@ class OrderEntity {
   final OrderStatus status;
 
  OrderEntity({
+    required this.orderId,
     required this.status,
     required this.totalPrice,
     required this.uId,
@@ -23,6 +25,7 @@ class OrderEntity {
 
  factory OrderEntity.fromJson(Map<String, dynamic> json) {
    return OrderEntity(
+     orderId: json['orderId'],
      status: json['status'],
      totalPrice: json['totalPrice'],
      uId: json['uId'],

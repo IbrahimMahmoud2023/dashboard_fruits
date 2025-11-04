@@ -51,6 +51,7 @@ OrderEntity getDummyOrderData() {
 
   // 💳 Build the Order Model
   return OrderEntity(
+    orderId: "ORD001",
     status: OrderStatus.pending,
     totalPrice: totalPrice,
     uId: "ORD001",

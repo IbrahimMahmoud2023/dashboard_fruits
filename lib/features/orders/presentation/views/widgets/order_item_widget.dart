@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub_dashboard/core/helper_function/get_status_color.dart';
 import 'package:fruits_hub_dashboard/features/orders/domain/entites/order_entity.dart';
 import '../../../data/models/order_product_model.dart';
+import 'order_action_button.dart';
 
 class OrderItemWidget extends StatelessWidget {
   final OrderEntity orderModel;
@@ -131,6 +132,12 @@ class OrderItemWidget extends StatelessWidget {
                 ).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
               ),
             ),
+            const SizedBox(height: 16),
+
+            OrderActionButton(
+              orderEntity: orderModel,
+            ),
+            
           ],
         ),
       ),
